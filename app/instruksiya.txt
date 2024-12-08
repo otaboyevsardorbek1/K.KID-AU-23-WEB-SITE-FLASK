@@ -1,0 +1,46 @@
+Agar siz config.py faylini ishlatgan bo‘lsangiz, Flask ilovasida qanday chaqirish kerak:
+
+Appni konfiguratsiya qilish:
+app.py faylida quyidagicha config.py dan foydalanish mumkin:
+
+
+python 
+Copy code
+
+from flask import Flask
+
+from config import config
+
+
+app = Flask(__name__)
+
+
+# Konfiguratsiyani tanlash
+
+app.config.from_object(config['development'])  
+# Yoki testing, production
+Rol va URL Prefikslarini ishlatish:
+
+Flask Blueprintlarida ro‘l va URL prefikslarini ishlatish uchun RoleConfig klassidan
+ foydalanish mumkin.
+
+python
+Copy code
+
+from config import RoleConfig
+
+
+@app.route(RoleConfig.ROLE_URLS[RoleConfig.USERS_ROLE] + '/index')
+
+def user_dashboard():
+    
+ return "User Dashboard"
+
+Tushuncha
+ SECRET_KEY – Flask ilovasi uchun maxfiy kalit. Bu, masalan, foydalanuvchi sessiyalarini saqlash uchun zarur.
+
+DATABASE_URI – Ma'lumotlar bazasi uchun URI. Buni o‘zgaritirish orqali, SQLite, PostgreSQL yoki boshqa bazalarga ulanishingiz mumkin.
+
+DEBUG va TESTING – Flask ilovasining ish rejimi, masalan, dasturlash yoki sinov.
+
+RoleConfig – Foydalanuvchi rollari va ularga mos URL prefikslarini o‘rnatish uchun ishlatiladi.
