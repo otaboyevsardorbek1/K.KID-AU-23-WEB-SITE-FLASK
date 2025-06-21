@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session, flash
+from flask import Flask, render_template, redirect, url_for, session, flash,request
 from users.routes import users_bp
 from admins.routes import admins_bp
 from teachers.routes import teachers_bp
@@ -9,7 +9,7 @@ from kuratr.routes import kuratr_bp
 app = Flask(__name__)
 app.secret_key = 'hggygyt56f7r6r'
 
-# Blueprintlarni ro‘yxatga olish
+# Blueprintlarni roï¿½yxatga olish
 app.register_blueprint(users_bp)
 app.register_blueprint(admins_bp)
 app.register_blueprint(teachers_bp)

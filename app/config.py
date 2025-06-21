@@ -2,7 +2,7 @@ import os
 
 class Config:
     """Asosiy Flask sozlamalari"""
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'random_secret_key_here'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(24)
     DEBUG = False
     TESTING = False
     DATABASE_URI = 'sqlite:///your_database.db'  # Ma'lumotlar bazasi manzili
@@ -46,7 +46,7 @@ class RoleConfig:
         KURATR_ROLE: KURATR_URL_PREFIX,
     }
 
-# To‘g‘ri rejimni tanlash uchun Flask ilovasida ishlatish
+# Toï¿½gï¿½ri rejimni tanlash uchun Flask ilovasida ishlatish
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
