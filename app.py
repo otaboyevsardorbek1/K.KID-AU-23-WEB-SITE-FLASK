@@ -1,14 +1,17 @@
 from flask import Flask, render_template, redirect, url_for, session, flash,request
-from users.routes import users_bp
-from admins.routes import admins_bp
-from teachers.routes import teachers_bp
-from owners.routes import owners_bp
-from starisa.routes import starisa_bp
-from kuratr.routes import kuratr_bp
+from app.users.routes import users_bp
+from app.admins.routes import admins_bp
+from app.teachers.routes import teachers_bp
+from app.owners.routes import owners_bp
+from app.starisa.routes import starisa_bp
+from app.kuratr.routes import kuratr_bp
+from middleware import block_bots
 
 app = Flask(__name__)
 app.secret_key = 'hggygyt56f7r6r'
 
+# Botlarni har doim tekshir
+block_bots(app)
 # Blueprintlarni ro�yxatga olish
 app.register_blueprint(users_bp)
 app.register_blueprint(admins_bp)
